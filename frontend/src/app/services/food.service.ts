@@ -25,4 +25,9 @@ export class FoodService {
   getAllFoodsByTag(tag: string): Food[] {
     return tag === 'All' ? this.getAll() : this.getAll().filter(food => food.tags?.includes(tag));
   }
+
+  // (Nullish coalescing operator) -> ?? -> when [this.getAll().find(food => food.id == foodId)] -> is undefined -> then return  -> new Food();
+  getFoodById(foodId: string):Food{
+    return this.getAll().find(food => food.id == foodId) ?? new Food();
+  }
 }
